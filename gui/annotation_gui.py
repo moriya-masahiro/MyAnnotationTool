@@ -25,10 +25,8 @@ class SimpleGUI:
 
     def run(self):
         # create window
-        print("a")
-        #cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
-        print("b")
-        #cv2.createTrackbar("image_id", 0, len(self.image_list)-1, printing)
+        cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
+        cv2.createTrackbar("image_id", 0, len(self.image_list)-1, printing)
 
         # read first image
         image_now = self.read_image(self.image_list[0])

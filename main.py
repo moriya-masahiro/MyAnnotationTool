@@ -27,23 +27,6 @@ if __name__ == '__main__':
     with open(param_file) as file:
         params = yaml.safe_load(file)
 
-    # gui = SimpleGUI(Path(params["source_directory"]))
+    gui = SimpleGUI(Path(params["source_directory"]))
 
-    # cv2.imshow("frame", cv2.imread("/Users/moriyamasahiro/dataset/image/classification/256_ObjectCategories/001.ak47/001_0001.jpg"))
-    # cv2.waitKey()
-
-    cap = cv2.VideoCapture(0)
-
-    while cap.isOpened():
-        flags, frame = cap.read()
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        print(gray.shape)
-        cv2.imshow('img', gray)
-        print("hoge")
-        if cv2.waitKey(100):
-            break
-
-    cap.release()
-    cv2.destroyAllWindows()
-
-    # gui.run()
+    gui.run()
