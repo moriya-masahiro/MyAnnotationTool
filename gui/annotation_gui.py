@@ -2,8 +2,10 @@ import functools
 
 import cv2
 
+
 def printing(position):
     print(position)
+
 
 class SimpleGUI:
     # only hogehoge
@@ -22,11 +24,10 @@ class SimpleGUI:
 
         return img
 
-
     def run(self):
         # create window
         cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
-        cv2.createTrackbar("image_id", 0, len(self.image_list)-1, printing)
+        cv2.createTrackbar("image_id", self.window_name, 0, len(self.image_list)-1, printing)
 
         # read first image
         image_now = self.read_image(self.image_list[0])
@@ -34,7 +35,7 @@ class SimpleGUI:
         cv2.imshow(self.window_name, image_now)
 
         while(True):
-            k = cv2.waitKey(0)
+            k = cv2.waitKey(100)
             if k == ord('q'):
                 break
             # key is "->", read and show next image
@@ -43,6 +44,7 @@ class SimpleGUI:
                 image_now = self.read_image(self.image_list[self.read_header])
                 cv2.setTrackbarPos("image_id", self.window_name, self.read_header)
                 cv2.imshow(self.window_name, image_now)
+                print(f"Now, show you the image No.{self.read_header}")
 
             # key is "<-", read and show past image
             elif k == 65361:
@@ -50,6 +52,7 @@ class SimpleGUI:
                 image_now = self.read_image(self.image_list[self.read_header])
                 cv2.setTrackbarPos("image_id", self.window_name, self.read_header)
                 cv2.imshow(self.window_name, image_now)
+                print(f"Now, show you the image No.{self.read_header}")
 
             # get trackbar pos and set to read_header if changed
             image_id_trackbar = cv2.getTrackbarPos("image_id", self.window_name)
@@ -57,6 +60,7 @@ class SimpleGUI:
                 self.read_header = image_id_trackbar
                 image_now = self.read_image(self.image_list[self.read_header])
                 cv2.imshow(self.window_name, image_now)
+                print(f"Now, show you the image No.{self.read_header}")
 
         cv2.destroyWindow(self.window_name)
 

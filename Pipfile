@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 opencv-python = "4.4.0.46"
 pyyaml = "5.3.1"
+opencv-python-headless = "4.4.0.46"
 
 [requires]
 python_version = "3"
